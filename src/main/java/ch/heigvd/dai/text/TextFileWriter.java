@@ -4,12 +4,17 @@ import ch.heigvd.dai.Writable;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class TextFileWriter implements Writable {
 
     @Override
     public void write(String filename, int sizeInBytes) throws IOException {
-        // TODO : implement this method
-        throw new UnsupportedOperationException("Not implemented yet");
+        try(FileWriter fw = new FileWriter(filename, StandardCharsets.UTF_8)){
+            for(int i = 0; i < sizeInBytes; ++i){
+                fw.write('a');
+            }
+        }
     }
 }
